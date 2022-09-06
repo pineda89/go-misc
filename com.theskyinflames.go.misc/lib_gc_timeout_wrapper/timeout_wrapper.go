@@ -65,8 +65,7 @@ func (tw *timeoutWrapper) Wrap(timeout time.Duration, wrappable Wrappable_I) (*[
     }()
 
     go func(){  // Fire up the timeout watcher
-        timer := time.NewTimer(timeout)
-        <-timer.C
+        time.Sleep(timeout)
         close(c_timeout)
     }()
 
